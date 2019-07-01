@@ -1,7 +1,5 @@
 # wasm-unic
-WebAssembly wrapper for [rust-unic](https://github.com/open-i18n/rust-unic)
-
-🚧 __Very Early Stage__ Work In Progress 🚧
+An experiment of providing WebAssembly bindings for [rust-unic](https://github.com/open-i18n/rust-unic)
 
 ## Build
 
