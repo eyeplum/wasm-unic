@@ -52,6 +52,11 @@ pub fn get_unicode_version() -> Version {
 }
 
 #[wasm_bindgen]
+pub fn get_code_point(chr: char) -> u32 {
+    chr as u32
+}
+
+#[wasm_bindgen]
 pub fn get_name(chr: char) -> String {
     Name::of(chr)
         .map(|n| n.to_string())

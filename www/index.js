@@ -16,8 +16,9 @@ button.value = "Print Unicode Name";
 button.addEventListener("click", () => {
   var userInput = document.getElementById("char-input").value;
   console.log("================== Unicode Data ==================");
+  console.log("      Code Point : U+" + unic.get_code_point(userInput).toString(16));
   console.log("            Name : " + unic.get_name(userInput));
-  console.log("             Age : " + get_version_string(unic.get_age(userInput)));
+  console.log("             Age : Unicode " + get_version_string(unic.get_age(userInput)));
   console.log("General Category : " + get_category_string(unic.get_general_category(userInput)));
   console.log("==================================================");
 });
