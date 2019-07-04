@@ -10,11 +10,11 @@ function get_category_string(category) {
 
 console.log(">>>>> Unicode Version: " + get_version_string(unic.get_unicode_version()) + " <<<<<");
 
-var button = document.createElement("input");
-button.type = "button";
-button.value = "Print Unicode Name";
+var button = document.getElementById("button");
+var outputNode = document.getElementById("output");
+var inputNode = document.getElementById("char-input");
 button.addEventListener("click", () => {
-  var userInput = document.getElementById("char-input").value;
+  var userInput = inputNode.value;
   unic.get_segmented_scalars(userInput).forEach((value) => {
     if (value < 0) {
       // This is a separator
@@ -23,12 +23,16 @@ button.addEventListener("click", () => {
     } else {
       // This is a code point
       var character = unic.get_character_from_code_point(value);
-      console.log("================== " + character + " ==================");
-      console.log("      Code Point : U+" + unic.get_code_point(character).toString(16).toUpperCase());
-      console.log("            Name : " + unic.get_name(character));
-      console.log("             Age : Unicode " + get_version_string(unic.get_age(character)));
-      console.log("General Category : " + get_category_string(unic.get_general_category(character)));
+      outputValue = "================== " + character + " ==================";
+      outputValue += "\n      Code Point : U+" + unic.get_code_point(character).toString(16).toUpperCase();
+      outputValue += "\n            Name : " + unic.get_name(character);
+      outputValue += "\n             Age : Unicode " + get_version_string(unic.get_age(character));
+      outputValue += "\nGeneral Category : " + get_category_string(unic.get_general_category(character));
+      outputValue += "\n==================================================";
+      console.log(outputValue)
+      pNode = document.createElement("p")
+      p.innerHTML = outputValue
+      outputNode.appendChild(pNode)
     }
   });
 });
-document.body.appendChild(button);
