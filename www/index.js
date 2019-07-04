@@ -18,7 +18,7 @@ button.addEventListener("click", () => {
   unic.get_segmented_scalars(userInput).forEach((value) => {
     if (value < 0) {
       // This is a separator
-      console.log("======= End of Grapheme Cluster ======="); 
+      console.log("======= End of Grapheme Cluster =======");
       console.log("");
     } else {
       // This is a code point
