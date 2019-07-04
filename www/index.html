@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Hello wasm-unic!</title>
+    <script src="./bootstrap.js"></script>
   </head>
   <body>
-    <script src="./bootstrap.js"></script>
     <p>Type character in the text input below.</p>
     <p>Unicode character data (grouped in grapheme clusters) will appear in the Console.</p>
-    <input type="text" id="char-input"/>
+    <div>
+      <input type="text" id="char-input">
+      <input type="button" id="button" value="Print Unicode Name">
+      <p style="white-space: pre-wrap;" id="output">Result</p>
+    </div>
   </body>
 </html>
