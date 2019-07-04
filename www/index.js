@@ -18,16 +18,16 @@ button.addEventListener("click", () => {
   unic.get_segmented_scalars(userInput).forEach((value) => {
     if (value < 0) {
       // This is a separator
-      console.log(">>>>>> End of Grapheme Cluster <<<<<");
+      console.log("======= End of Grapheme Cluster ======="); 
+      console.log("");
     } else {
       // This is a code point
       var character = unic.get_character_from_code_point(value);
-      console.log("================== Unicode Data ==================");
+      console.log("================== " + character + " ==================");
       console.log("      Code Point : U+" + unic.get_code_point(character).toString(16).toUpperCase());
       console.log("            Name : " + unic.get_name(character));
       console.log("             Age : Unicode " + get_version_string(unic.get_age(character)));
       console.log("General Category : " + get_category_string(unic.get_general_category(character)));
-      console.log("==================================================");
     }
   });
 });
