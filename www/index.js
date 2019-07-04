@@ -15,11 +15,20 @@ button.type = "button";
 button.value = "Print Unicode Name";
 button.addEventListener("click", () => {
   var userInput = document.getElementById("char-input").value;
-  console.log("================== Unicode Data ==================");
-  console.log("      Code Point : U+" + unic.get_code_point(userInput).toString(16).toUpperCase());
-  console.log("            Name : " + unic.get_name(userInput));
-  console.log("             Age : Unicode " + get_version_string(unic.get_age(userInput)));
-  console.log("General Category : " + get_category_string(unic.get_general_category(userInput)));
-  console.log("==================================================");
+  unic.get_segmented_scalars(userInput).forEach((value) => {
+    if (value < 0) {
+      // This is a separator
+      console.log(">>>>>> End of Grapheme Cluster <<<<<");
+    } else {
+      // This is a code point
+      var character = unic.get_character_from_code_point(value);
+      console.log("================== Unicode Data ==================");
+      console.log("      Code Point : U+" + unic.get_code_point(character).toString(16).toUpperCase());
+      console.log("            Name : " + unic.get_name(character));
+      console.log("             Age : Unicode " + get_version_string(unic.get_age(character)));
+      console.log("General Category : " + get_category_string(unic.get_general_category(character)));
+      console.log("==================================================");
+    }
+  });
 });
 document.body.appendChild(button);

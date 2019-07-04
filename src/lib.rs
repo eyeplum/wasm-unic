@@ -2,6 +2,7 @@
 
 use unic::{
     char::property::EnumeratedCharProperty,
+    segment::Graphemes,
     ucd::{age::Age, category, name::Name, version},
 };
 use wasm_bindgen::prelude::*;
@@ -49,6 +50,41 @@ impl GeneralCategory {
 #[wasm_bindgen]
 pub fn get_unicode_version() -> Version {
     Version::new(version::UNICODE_VERSION)
+}
+
+// We need to have a special value acting as the separator because wasm-bindgen doesn't support
+// two-dimentional vector as return values
+const GRAPHEME_SEPARATOR_VALUE: i32 = -1;
+
+///
+/// Get segmented Unicode scalars of a string with each segmentation representing a Unicode
+/// grapheme cluster.
+///
+/// Returns a list of 32-bit signed integers where:
+/// - Integers equal or greater than 0 represent a code point of a Unicode character
+/// - Integers less than 0 are separators of the segmentations
+///
+#[wasm_bindgen]
+pub fn get_segmented_scalars(string: &str) -> Vec<i32> {
+    let mut scalars = vec![];
+    {
+        Graphemes::new(string).for_each(|grapheme| {
+            grapheme.chars().for_each(|scalar| {
+                scalars.push(scalar as i32);
+            });
+            scalars.push(GRAPHEME_SEPARATOR_VALUE);
+        });
+    }
+    scalars
+}
+
+///
+/// Convert a Unicode code point to a character.
+/// If the code point is invalid, U+FFFD is returned.
+///
+#[wasm_bindgen]
+pub fn get_character_from_code_point(code_point: u32) -> char {
+    std::char::from_u32(code_point).unwrap_or_else(|| std::char::from_u32(0xFFFD).unwrap())
 }
 
 #[wasm_bindgen]
