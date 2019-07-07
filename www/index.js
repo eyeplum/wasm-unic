@@ -23,12 +23,18 @@ function printCharacterResultInNode(character) {
   var trNode = document.createElement("tr");
   var codeNode = document.createElement("td");
   codeNode.innerHTML = "U+" + unic.get_code_point(character).toString(16).toUpperCase();
+  codeNode.align = "right";
   trNode.appendChild(codeNode);
   var cNode = document.createElement("td");
-  cNode.innerHTML = character;
+  var cPNode = document.createElement("p");
+  cNode.align = "center";
+  cPNode.className = "unic";
+  cPNode.innerHTML = character;
+  cNode.appendChild(cPNode);
   trNode.appendChild(cNode);
   var nameNode = document.createElement("td");
   nameNode.innerHTML = unic.get_name(character);
+  nameNode.align = "left";
   trNode.appendChild(nameNode);
   return trNode;
 }
@@ -58,6 +64,7 @@ button.addEventListener("click", () => {
     var tableNode = printResultsForOneQueyChar(char);
     var charNode = document.createElement("p");
     charNode.innerHTML = char;
+    charNode.className = "char";
     outputNode.appendChild(charNode);
     outputNode.appendChild(tableNode);
   });
