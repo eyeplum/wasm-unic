@@ -3,8 +3,6 @@ An experiment of providing WebAssembly bindings for [rust-unic](https://github.c
 
 [Live Demo](https://eyeplum.github.io/wasm-unic/)
 
-![](./screenshots/sample-screenshot.png)
-
 ## Build and Run Locally
 
 1. Build wasm package
