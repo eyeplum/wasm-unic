@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello wasm-unic!</title>
+    <script src="./bootstrap.js"></script>
+    <style>
+      body {
+        font-family: Sans-Serif;
+      }
+      .content {
+        max-width: 500px;
+        margin: auto;
+      }
+      tr td {
+        padding: 8px;
+        font-size: large;
+      }
+      tr td:first-child {
+        width: 100px;
+      }
+      input[type=text] {
+        width: 320px;
+        height: 32px;
+        font-size: large;
+        padding-left: 8px;
+      }
+      input[type=button] {
+        margin-left: 16px;
+        font-size: x-large;
+      }
+      p.unic {
+        border-style: dashed;
+        border-width: 3px;
+        border-color: #D20000;
+        font-size: x-large;
+        padding: 4px;
+        margin: unset;
+        width: 32px;
+        height: 32px;
+      }
+      a {
+        color: #D20000;
+      }
+      p.char {
+        margin: unset;
+        font-size: x-large;
+      }
+      h1 {
+        text-align: center;
+      }
+      p.description {
+        text-align: center;
+      }
+      #input {
+        margin-top: 60px;
+      }
+      #output {
+        margin-top: 60px;
+        margin-bottom: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Grapheme Cluster Checker</h1>
+      <p class="description">A demo of using <a href="https://github.com/open-i18n/rust-unic">rust-unic</a> in WebAssembly.</p>
+      <div id="input">
+        <input type="text" id="char-input" placeholder="Type Characters" value="ಠ_ರೃ 🇳🇿👨🏻‍💻👨‍👩‍👧‍👦">
+        <input type="button" id="button" value="Check">
+      </div>
+      <div id="output"></div>
+    </div>
+    <div>
+      <p class="description" id="version">Unicode Version</p>
+      <p class="description">Checkout source code on <a href="https://github.com/eyeplum/wasm-unic">GitHub</a>.</p>
+    </div>
+  </body>
+</html>
